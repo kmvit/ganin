@@ -198,6 +198,12 @@ button { font: inherit; cursor: pointer; }
   align-items: center;
   gap: 10px;
   color: var(--accent);
+  position: relative;
+  overflow: hidden;
+  padding: 2px 4px;          /* breathing room for the shine */
+  margin: -2px -4px;         /* compensate so layout isn't affected */
+  border-radius: 8px;
+  isolation: isolate;
 }
 .brand__mark { width: 28px; height: 28px; }
 .brand__name {
@@ -206,6 +212,35 @@ button { font: inherit; cursor: pointer; }
   font-size: 17px;
   letter-spacing: -0.01em;
   color: var(--fg);
+}
+
+/* Hover shine — a diagonal band sweeps across the logo */
+.brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.55) 48%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.55) 52%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+  z-index: 1;
+}
+.brand:hover::after,
+.brand:focus-visible::after {
+  animation: brand-shine 0.85s ease-out;
+}
+@keyframes brand-shine {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(120%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand::after { display: none; }
 }
 
 .nav__list {
@@ -416,8 +451,8 @@ button { font: inherit; cursor: pointer; }
   inset: 0;
   z-index: 3;
   background:
-    radial-gradient(ellipse at 30% 40%, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 75%),
-    linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,0) 35%, rgba(0,0,0,.65) 100%);
+    radial-gradient(ellipse at 30% 40%, rgba(0,0,0,0) 0%, rgba(0,0,0,.28) 75%),
+    linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,0) 35%, rgba(0,0,0,.38) 100%);
   pointer-events: none;
 }
 
