@@ -214,7 +214,7 @@
       }
 
       let inflight = 0;
-      const MAX_PARALLEL = 6;
+      const MAX_PARALLEL = 20;   // HTTP/2 multiplexing — saturate the pipe
       let cursor = 0;
 
       const next = () => {
@@ -223,6 +223,7 @@
           inflight++;
           const img = new Image();
           img.decoding = 'async';
+          if ('fetchPriority' in img) img.fetchPriority = 'high';
           img.src = FRAME_FMT(idx);
           img.onload = img.onerror = () => {
             inflight--;
