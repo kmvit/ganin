@@ -385,13 +385,18 @@ button { font: inherit; cursor: pointer; }
 /* ============ Hero ============ */
 .hero {
   position: relative;
-  height: 220vh;        /* scroll length for the video */
+  /* Use dvh (dynamic viewport height) so mobile URL-bar collapse
+     doesn't make the hero taller than the actually visible scroll
+     range. Falls back to vh on browsers without dvh support. */
+  height: 220vh;
+  height: 220dvh;       /* scroll length for the video */
   background: #000;
 }
 .hero__sticky {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 .hero__canvas,
@@ -1427,7 +1432,7 @@ a.ccard__big:hover { color: var(--accent); }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .phone-link { display: none; }
-  .hero { height: 180vh; }   /* shorter scroll range on mobile */
+  .hero { height: 180vh; height: 180dvh; }   /* shorter scroll range on mobile */
   .hero__title { font-size: clamp(1.9rem, 8.6vw, 2.8rem); letter-spacing: -0.02em; max-width: none; hyphens: auto; }
   .hero__lede  { font-size: 15px; }
   .hero__content { padding-bottom: 56px; }

@@ -251,37 +251,44 @@
       next();
     };
 
-    // Compute current frame index from scroll position
+    // Compute current frame index from scroll position.
+    // Use absolute scrollY + hero.offsetTop/offsetHeight — these stay
+    // consistent regardless of browser quirks with rect.top during
+    // sticky-pinning or URL-bar resize.
     const computeIdx = () => {
-      const rect = hero.getBoundingClientRect();
-      const scrolled = -rect.top;
-      const total = rect.height - visibleVh();
+      let heroTop = 0;
+      for (let el = hero; el; el = el.offsetParent) heroTop += el.offsetTop;
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const scrolled = scrollPos - heroTop;
+      const total = hero.offsetHeight - visibleVh();
       const progress = total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0;
       return Math.round(progress * (FRAME_COUNT - 1));
     };
     const onScroll = () => drawFrame(computeIdx());
 
-    // Continuous rAF loop while the hero is on-screen. We can't rely on
-    // scroll events alone — some Android browsers (Samsung Internet,
-    // Chrome) throttle them during sticky-pinning + URL-bar collapse,
-    // so the canvas stops updating until well into the unstick phase.
-    // A self-perpetuating rAF reads the latest scroll every frame.
+    // Continuous rAF loop. Start it immediately and let it run while
+    // the hero is anywhere near the viewport. Some Android browsers
+    // throttle scroll events during sticky-pinning + URL-bar collapse,
+    // so a self-perpetuating rAF is the only reliable way to keep
+    // the canvas in sync with scroll position.
     let rafId = null;
-    let heroInView = true;
+    let running = false;
     const tick = () => {
       drawFrame(computeIdx());
-      rafId = heroInView ? requestAnimationFrame(tick) : null;
+      rafId = running ? requestAnimationFrame(tick) : null;
     };
     const startTick = () => {
-      if (rafId == null) {
-        heroInView = true;
+      if (!running) {
+        running = true;
         rafId = requestAnimationFrame(tick);
       }
     };
     const stopTick = () => {
-      heroInView = false;
+      running = false;
       if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; }
     };
+    // Start immediately, pause only when hero is far away.
+    startTick();
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         for (const e of entries) {
@@ -290,10 +297,8 @@
             else stopTick();
           }
         }
-      }, { threshold: 0 });
+      }, { threshold: 0, rootMargin: '200px 0px' });
       io.observe(hero);
-    } else {
-      startTick();
     }
 
     sizeCanvas();
