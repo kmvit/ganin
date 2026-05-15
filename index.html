@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0E0E0E" />
+  <title>Стройдеталь-2 — бетон, ЖБИ и асфальт в Пятигорске с 1962 года</title>
+  <meta name="description" content="ЗАО «Стройдеталь-2» — один из крупнейших заводов на Юге России. Товарный бетон, ЖБИ, асфальтобетон, тротуарная плитка. Круглосуточная доставка по КМВ. Собственная лаборатория и карьер." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" data-header>
+  <div class="container header-row">
+    <a class="brand" href="#top" aria-label="GANIN GROUP — на главную">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="5" fill="currentColor"/><text x="16" y="23.5" text-anchor="middle" font-family="Unbounded, system-ui, sans-serif" font-weight="800" font-size="22" letter-spacing="-1" fill="#0E0E0E">G</text></svg>
+      <span class="brand__name">GANIN GROUP</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <ul class="nav__list">
+        <li><a href="#about">О заводе</a></li>
+        <li class="nav__has-sub">
+          <a href="#products" aria-haspopup="true">Продукция</a>
+          <ul class="nav__sub" aria-label="Категории продукции">
+            <li><a href="products/concrete.html">Товарный бетон и&nbsp;растворы</a></li>
+            <li><a href="products/zhbi.html">ЖБИ <small>293 позиции</small></a></li>
+            <li><a href="products/asphalt.html">Асфальтобетон</a></li>
+            <li><a href="products/paving.html">Тротуарная плитка, бордюр</a></li>
+            <li><a href="products/drainage.html">Дренажные лотки</a></li>
+            <li><a href="products/quarry.html">Инертные материалы <small>карьер</small></a></li>
+          </ul>
+        </li>
+        <li><a href="#delivery">Доставка</a></li>
+        <li><a href="#quality">Качество</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+78793976262">+7 (8793) 97-62-62</a>
+      <a class="btn btn--accent" href="#contacts">Запросить прайс</a>
+    </div>
+
+    <button class="burger" data-burger aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO with scroll video ============ -->
+<section class="hero" id="top" data-hero>
+  <div class="hero__sticky">
+    <canvas class="hero__canvas" data-hero-canvas aria-hidden="true"></canvas>
+    <img class="hero__fallback" data-hero-fallback src="assets/hero-frames/frame-001.webp" alt="" aria-hidden="true" />
+    <div class="hero__shade"></div>
+
+    <div class="container hero__content">
+      <p class="hero__eyebrow">Производство с 1962 года · Пятигорск</p>
+      <h1 class="hero__title">
+        Бетон, ЖБИ&nbsp;и&nbsp;асфальт<br />
+        <span class="accent">для большой стройки</span>
+      </h1>
+      <p class="hero__lede">
+        Один из крупнейших заводов Северного Кавказа.
+        150&thinsp;000&nbsp;м³ товарного бетона в&nbsp;год,
+        293&nbsp;позиции ЖБИ, собственный карьер и&nbsp;лаборатория.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--accent btn--lg" href="#products">Смотреть продукцию</a>
+        <a class="btn btn--ghost btn--lg" href="#delivery">Условия доставки</a>
+      </div>
+    </div>
+
+    <div class="hero__scrollhint" aria-hidden="true">
+      <span>Прокрутите</span>
+      <svg viewBox="0 0 16 24" width="14" height="22"><path d="M8 2v18M3 15l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<section class="stats" aria-label="Завод в цифрах">
+  <div class="container stats__grid">
+    <div class="stat reveal"><span class="stat__num">62+</span><span class="stat__label">года производства</span></div>
+    <div class="stat reveal"><span class="stat__num">150 000</span><span class="stat__label">м³ бетона в год</span></div>
+    <div class="stat reveal"><span class="stat__num">293</span><span class="stat__label">позиции ЖБИ</span></div>
+    <div class="stat reveal"><span class="stat__num">24/7</span><span class="stat__label">доставка по КМВ</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container about__grid">
+    <div class="about__head reveal">
+      <p class="eyebrow">О заводе</p>
+      <h2 class="h2">
+        Шестьдесят лет опыта,<br />немецкое оборудование,<br />собственное сырьё.
+      </h2>
+    </div>
+    <div class="about__body reveal">
+      <p>
+        ЗАО «Стройдеталь-2» работает с&nbsp;1962&nbsp;года. За&nbsp;это время
+        завод стал одним из&nbsp;крупнейших производителей строительных
+        материалов на&nbsp;Юге России. Мы&nbsp;поставляем бетон, ЖБИ,
+        асфальт и&nbsp;тротуарную плитку на&nbsp;объекты любого масштаба&nbsp;—
+        от&nbsp;частных домов до&nbsp;крупной инфраструктуры.
+      </p>
+      <p>
+        После модернизации 2010–2017&nbsp;годов производство полностью
+        переведено на&nbsp;немецкие линии&nbsp;<b>Teka</b> и&nbsp;<b>ZENITH</b>.
+        Качество подтверждается аккредитованной лабораторией
+        и&nbsp;собственным сырьём с&nbsp;карьера&nbsp;— цепочка от&nbsp;щебня
+        до&nbsp;отгрузки находится под одним контролем.
+      </p>
+      <ul class="checklist">
+        <li>Сертификация по&nbsp;6 категориям продукции</li>
+        <li>Двойной весовой контроль на&nbsp;каждой отгрузке</li>
+        <li>Собственный автопарк: 25&nbsp;миксеров, 8&nbsp;бетононасосов</li>
+        <li>Прямые договоры с&nbsp;генподрядчиками региона</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section timeline-section" aria-label="История модернизации">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">История модернизации</p>
+      <h2 class="h2">Завод, который<br/>обновлялся&nbsp;вместе&nbsp;с&nbsp;отраслью.</h2>
+      <p class="section__lede">
+        За&nbsp;последние пятнадцать лет мы&nbsp;поменяли почти весь
+        производственный парк. Сегодня 90% оборудования&nbsp;— немецкого
+        и&nbsp;итальянского производства.
+      </p>
+    </header>
+
+    <ol class="timeline reveal">
+      <li>
+        <span class="timeline__year">2010</span>
+        <h4>Линия Teka</h4>
+        <p>Введён в&nbsp;строй уникальный бетонный завод немецкого концерна <b>Teka</b>&nbsp;— автоматизация и&nbsp;точная дозировка по&nbsp;всему циклу.</p>
+      </li>
+      <li>
+        <span class="timeline__year">2011</span>
+        <h4>Линия ZENITH</h4>
+        <p>Открыли производство тротуарной плитки, бордюрного камня, палисадов и&nbsp;водоотводов на&nbsp;линии немецкой фирмы <b>ZENITH Gmbh</b>.</p>
+      </li>
+      <li>
+        <span class="timeline__year">2015</span>
+        <h4>Двухсменный режим</h4>
+        <p>Из-за растущего спроса перешли на&nbsp;работу в&nbsp;две смены&nbsp;— чтобы держать сроки на&nbsp;крупных объектах региона.</p>
+      </li>
+      <li>
+        <span class="timeline__year">2017</span>
+        <h4>Второй завод Teka</h4>
+        <p>Запустили в&nbsp;эксплуатацию второй бетонный завод Teka&nbsp;— резервная мощность и&nbsp;стабильность поставок 24/7.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ DIRECTOR QUOTE ============ -->
+<section class="quote-block" aria-label="Слово директора">
+  <div class="container">
+    <blockquote class="quote reveal">
+      <p class="quote__text">
+        Десятилетия работает завод «Стройдеталь-2». 90% оборудования&nbsp;—
+        немецкого производства: <i>Teka</i>, <i>ZENITH Gmbh</i> и&nbsp;другие.
+      </p>
+      <p class="quote__text">
+        За&nbsp;последние годы мы&nbsp;внедрили новейшие технологии. Считаю,
+        что мой завод&nbsp;— один из&nbsp;крупнейших по&nbsp;объёмам выпуска
+        в&nbsp;регионе. Делаем продукт, за&nbsp;который не&nbsp;стыдно.
+      </p>
+      <footer class="quote__author">
+        <cite>Михаил Ганин</cite>
+        <span>Собственник и&nbsp;генеральный директор</span>
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section products" id="products">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Продукция</p>
+      <h2 class="h2">Что мы производим</h2>
+      <p class="section__lede">
+        Полный цикл строительных материалов из&nbsp;одних рук.
+        Любая позиция&nbsp;— с&nbsp;паспортом качества и&nbsp;доставкой.
+      </p>
+    </header>
+
+    <div class="products__grid">
+      <a class="product reveal" href="products/concrete.html">
+        <div class="product__media">
+          <img src="assets/img/products/concrete.webp" alt="Автопарк автобетоносмесителей завода «Стройдеталь-2»" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">Товарный бетон<br/>и&nbsp;растворы</h3>
+          <p>Бетон марок М100–М1000, кладочные и&nbsp;штукатурные растворы. Мелкозернистый, керамзитобетон, торкрет.</p>
+          <span class="product__more">Прайс и&nbsp;характеристики →</span>
+        </div>
+      </a>
+
+      <a class="product reveal" href="products/zhbi.html">
+        <div class="product__media">
+          <img src="assets/img/products/jbi.webp" alt="Стеновые блоки ЖБИ на территории завода" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">ЖБИ —<br/>293 позиции</h3>
+          <p>Плиты перекрытий, блоки ФБС, стеновые блоки, лестничные марши. Производство&nbsp;— линия ZENITH, 3&nbsp;млн&nbsp;блоков в&nbsp;год.</p>
+          <span class="product__more">Каталог и&nbsp;прайс →</span>
+        </div>
+      </a>
+
+      <a class="product reveal" href="products/asphalt.html">
+        <div class="product__media">
+          <img src="assets/img/products/asphalt.webp" alt="Укладка асфальта дорожным катком" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">Асфальтобетон</h3>
+          <p>Горячие смеси по&nbsp;ГОСТ&nbsp;9128, типы&nbsp;Б и&nbsp;Г. Поставка с&nbsp;соблюдением температуры на&nbsp;объект.</p>
+          <span class="product__more">Условия и&nbsp;цены →</span>
+        </div>
+      </a>
+
+      <a class="product reveal" href="products/paving.html">
+        <div class="product__media">
+          <img src="assets/img/products/paving.webp" alt="Уложенная тротуарная плитка завода «Стройдеталь-2»" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">Тротуарная плитка,<br/>бордюр</h3>
+          <p>Вибропрессованная плитка ZENITH&nbsp;— 17 форм, любые цвета. Бордюр, палисад. Срок службы до&nbsp;30&nbsp;лет.</p>
+          <span class="product__more">Каталог форм →</span>
+        </div>
+      </a>
+
+      <a class="product reveal" href="products/drainage.html">
+        <div class="product__media">
+          <img src="assets/img/products/drainage.webp" alt="Водоотводные лотки Б-7 — три вида" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">Дренажные лотки</h3>
+          <p>Бетонные водоотводные лотки Б-6 и&nbsp;Б-7. ГОСТ&nbsp;32955-2014, телескопический монтаж. Решётки и&nbsp;оголовки под заказ.</p>
+          <span class="product__more">Размеры и&nbsp;нагрузки →</span>
+        </div>
+      </a>
+
+      <a class="product reveal" href="products/quarry.html">
+        <div class="product__media">
+          <img src="assets/img/products/quarry.webp" alt="Карьер: щебнесортировочный комплекс и погрузчик" loading="lazy" width="1280" height="800" />
+        </div>
+        <div class="product__body">
+          <h3 class="product__title">Инертные материалы<br/>с&nbsp;карьера</h3>
+          <p>Щебень мытый 5–20&nbsp;мм, песок, отсев, ОПГС. То&nbsp;же сырьё, что идёт в&nbsp;наш бетон. От&nbsp;275&nbsp;₽/т.</p>
+          <span class="product__more">Прайс по&nbsp;фракциям →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERY ============ -->
+<section class="section delivery" id="delivery">
+  <div class="container delivery__grid">
+    <div class="delivery__head reveal">
+      <p class="eyebrow">Производство и&nbsp;доставка</p>
+      <h2 class="h2">Объём — это логистика.<br/>Мы её&nbsp;контролируем.</h2>
+      <p class="section__lede">
+        Бетон живёт минуты. Поэтому весь автопарк, маршрутизация
+        и&nbsp;диспетчерская&nbsp;— наши. Это позволяет держать
+        график подачи даже на&nbsp;нескольких объектах одновременно.
+      </p>
+    </div>
+
+    <div class="delivery__metrics">
+      <div class="metric reveal">
+        <span class="metric__num">25</span>
+        <span class="metric__label">автобетоносмесителей</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric__num">8</span>
+        <span class="metric__label">бетононасосов до&nbsp;42&nbsp;м</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric__num">24/7</span>
+        <span class="metric__label">круглосуточная отгрузка</span>
+      </div>
+      <div class="metric reveal">
+        <span class="metric__num">×2</span>
+        <span class="metric__label">контроль массы на&nbsp;отгрузке</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUALITY ============ -->
+<section class="section quality" id="quality">
+  <div class="container quality__grid">
+    <div class="quality__head reveal">
+      <p class="eyebrow">Качество</p>
+      <h2 class="h2">Лаборатория<br/>при заводе.</h2>
+      <p>
+        Каждая партия проходит испытания в&nbsp;нашей аккредитованной
+        лаборатории. Никаких «доверенных проб»&nbsp;— только результаты
+        с&nbsp;печатью и&nbsp;паспортом качества.
+      </p>
+      <a class="btn btn--ghost" href="https://sd2-lab.ru" target="_blank" rel="noopener">
+        Сайт лаборатории sd2-lab.ru →
+      </a>
+    </div>
+    <ul class="quality__list reveal">
+      <li>
+        <span class="quality__num">01</span>
+        <div>
+          <h4>Сертификация по&nbsp;6 категориям продукции</h4>
+          <p>Бетон, ЖБИ, асфальт, плитка, инертные, растворы&nbsp;— каждый класс с&nbsp;действующим сертификатом.</p>
+        </div>
+      </li>
+      <li>
+        <span class="quality__num">02</span>
+        <div>
+          <h4>ГОСТ 9128-2013, ГОСТ 7473-2010</h4>
+          <p>Соответствие действующим стандартам подтверждено и&nbsp;ежегодно перепроверяется.</p>
+        </div>
+      </li>
+      <li>
+        <span class="quality__num">03</span>
+        <div>
+          <h4>Двойной весовой контроль</h4>
+          <p>Каждая отгрузка взвешивается дважды&nbsp;— на&nbsp;заводе и&nbsp;при подаче, расхождения исключены.</p>
+        </div>
+      </li>
+      <li>
+        <span class="quality__num">04</span>
+        <div>
+          <h4>Награды и&nbsp;дипломы отрасли</h4>
+          <p>Признание профессиональных объединений строительной отрасли Северного Кавказа.</p>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="cert-grid reveal" aria-label="Сертификаты соответствия ГОСТ Р">
+      <li>
+        <figure><img src="assets/img/certificates/sertif-1.webp" alt="Сертификат соответствия — бетонные смеси" loading="lazy" /></figure>
+        <figcaption>Смеси бетонные</figcaption>
+      </li>
+      <li>
+        <figure><img src="assets/img/certificates/sertif-2.webp" alt="Сертификат — плиты железобетонные для покрытий городских дорог" loading="lazy" /></figure>
+        <figcaption>Плиты железобетонные для&nbsp;покрытий городских дорог</figcaption>
+      </li>
+      <li>
+        <figure><img src="assets/img/certificates/sertif-3.webp" alt="Сертификат — камни бетонные тротуарные" loading="lazy" /></figure>
+        <figcaption>Камни бетонные тротуарные</figcaption>
+      </li>
+      <li>
+        <figure><img src="assets/img/certificates/sertif-4.webp" alt="Сертификат — камни бетонные бортовые" loading="lazy" /></figure>
+        <figcaption>Камни бетонные бортовые</figcaption>
+      </li>
+      <li>
+        <figure><img src="assets/img/certificates/sertif-5.webp" alt="Сертификат — песок природный крупный" loading="lazy" /></figure>
+        <figcaption>Песок природный крупный</figcaption>
+      </li>
+      <li>
+        <figure><img src="assets/img/certificates/sertif-6.webp" alt="Сертификат — щебень из плотных пород 1 класса" loading="lazy" /></figure>
+        <figcaption>Щебень из&nbsp;плотных пород 1&nbsp;класса</figcaption>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PARTNERS STRIP ============ -->
+<section class="partners-strip reveal" aria-label="Партнёры и поставщики">
+  <div class="container">
+    <div class="partners-strip__head">
+      <p class="eyebrow">Партнёры</p>
+      <h3>С&nbsp;нами работают<br/>лидеры отрасли</h3>
+    </div>
+    <ul class="partners-list">
+      <li><img src="assets/img/partners/partner-1640221.webp" alt="EuroCement" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-2154102.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-2274167.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-2817532.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-4045064.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-4226581.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-4634172.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-6621580.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-6724278.webp" alt="" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-7723341.webp" alt="ZENITH Maschinenfabrik" loading="lazy" /></li>
+      <li><img src="assets/img/partners/partner-8681037.webp" alt="" loading="lazy" /></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="section contacts" id="contacts">
+  <div class="container contacts__grid">
+    <div class="contacts__head reveal">
+      <p class="eyebrow">Контакты</p>
+      <h2 class="h2">Запросите расчёт<br/>под ваш объект.</h2>
+      <p>
+        Назовите объём, марку, адрес и&nbsp;сроки&nbsp;—
+        пришлём прайс с&nbsp;учётом доставки в&nbsp;течение
+        рабочего дня.
+      </p>
+    </div>
+
+    <div class="contacts__cards">
+      <div class="ccard reveal">
+        <p class="ccard__label">Отдел продаж</p>
+        <a class="ccard__big" href="tel:+78793976262">+7 (8793) 97-62-62</a>
+        <a class="ccard__big" href="tel:+78793401665">+7 (8793) 40-16-65</a>
+      </div>
+      <div class="ccard reveal">
+        <p class="ccard__label">Адрес</p>
+        <p class="ccard__big">г.&nbsp;Пятигорск,<br/>Черкесское шоссе, 2</p>
+        <p class="ccard__muted">Пн–Пт 8:00–17:00 · Отгрузка 24/7</p>
+      </div>
+      <div class="ccard reveal">
+        <p class="ccard__label">Написать</p>
+        <a class="btn btn--accent" href="mailto:info@sd2-kmv.ru?subject=%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D1%80%D0%B0%D0%B9%D1%81%D0%B0&body=%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%3A%20%0A%D0%9F%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%86%D0%B8%D1%8F%3A%20%0A%D0%9E%D0%B1%D1%8A%D1%91%D0%BC%3A%20%0A%D0%A1%D1%80%D0%BE%D0%BA%D0%B8%3A%20%0A%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%3A%20">Запрос прайса</a>
+        <a class="btn btn--ghost" href="mailto:director@sd2-kmv.ru?subject=%D0%9E%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%20%D0%B3%D0%B5%D0%BD%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D1%83">Обращение к&nbsp;руководству</a>
+      </div>
+    </div>
+
+    <div class="contacts__map reveal">
+      <iframe
+        src="https://yandex.com/map-widget/v1/?ll=43.063%2C44.063&z=15&pt=43.063%2C44.063%2Cpm2rdm&mode=search&sctx=ZAAAAAgB"
+        title="Карта проезда: Пятигорск, Черкесское шоссе, 2"
+        loading="lazy"
+        allow="geolocation"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <noscript>
+        <p>Карта недоступна. Адрес: г. Пятигорск, Черкесское шоссе, 2.</p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <span class="brand__name">GANIN GROUP</span>
+      <p>Производство строительных материалов с&nbsp;1962&nbsp;года.</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__h">Продукция</p>
+      <ul>
+        <li><a href="#products">Товарный бетон</a></li>
+        <li><a href="#products">ЖБИ</a></li>
+        <li><a href="#products">Асфальтобетон</a></li>
+        <li><a href="#products">Тротуарная плитка</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <p class="footer__h">Контакты</p>
+      <ul>
+        <li><a href="tel:+78793976262">+7 (8793) 97-62-62</a></li>
+        <li><a href="tel:+78793401665">+7 (8793) 40-16-65</a></li>
+        <li>Пятигорск, Черкесское ш., 2</li>
+        <li><a href="https://sd2-lab.ru" rel="noopener" target="_blank">sd2-lab.ru</a></li>
+      </ul>
+    </div>
+    <div class="footer__col footer__legal">
+      <p>© 1962–<span data-year>2026</span> ЗАО «Стройдеталь-2».<br/>Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

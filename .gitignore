@@ -1,0 +1,70 @@
+# ============================================
+# OS noise
+# ============================================
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Editor / IDE
+# ============================================
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# ============================================
+# Logs and temp
+# ============================================
+*.log
+*.tmp
+.cache/
+.parcel-cache/
+
+# ============================================
+# Source video files — heavy raw inputs that
+# are NOT served on the site. The hero frames in
+# assets/hero-frames/ are derived from these and
+# ARE committed. To regenerate frames, drop a new
+# .mp4 in the project root and follow README.
+# ============================================
+*.mp4
+!assets/**/*.mp4
+
+# ============================================
+# Generated previews / scratch
+# ============================================
+/tmp/
+assets/img/raw/
+assets/img/old-site/
+
+# ============================================
+# Local dev / runtime
+# ============================================
+.env
+.env.local
+.env.*.local
+node_modules/
+
+# ============================================
+# Python (in case of tooling scripts)
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ============================================
+# Claude Code / agent runtime artifacts
+# ============================================
+.claude/plans/
+.claude/sessions/
+.claude/cache/
+# (keep .claude/launch.json — documents the local preview server)
