@@ -157,13 +157,22 @@
 
       const img = frames[idx];
       if (!img || !img.complete || img.naturalWidth === 0) {
-        // Frame not loaded yet — try previous one
-        for (let i = idx - 1; i >= 0; i--) {
-          const f = frames[i];
-          if (f && f.complete && f.naturalWidth) {
-            drawImageCover(f);
+        // Frame not loaded yet — try nearest loaded frame in either direction
+        for (let r = 1; r < FRAME_COUNT; r++) {
+          const back = frames[idx - r];
+          if (back && back.complete && back.naturalWidth) {
+            drawImageCover(back);
             return;
           }
+          const fwd = frames[idx + r];
+          if (fwd && fwd.complete && fwd.naturalWidth) {
+            drawImageCover(fwd);
+            return;
+          }
+        }
+        // Nothing loaded yet — fall back to the static poster image.
+        if (fallbackImg && fallbackImg.complete && fallbackImg.naturalWidth) {
+          drawImageCover(fallbackImg);
         }
         return;
       }
@@ -217,13 +226,15 @@
           img.src = FRAME_FMT(idx);
           img.onload = img.onerror = () => {
             inflight--;
+            frames[idx] = img;
             if (idx === 0 && !firstFrameReady && img.naturalWidth) {
               firstFrameReady = true;
               videoAspect = img.naturalWidth / img.naturalHeight;
               if (fallbackImg) fallbackImg.style.opacity = '0';
-              drawFrame(0, true);
             }
-            frames[idx] = img;
+            // After ANY frame arrives, repaint at the current scroll position
+            // so newly-loaded frames take over the fallback/older neighbours.
+            onScroll();
             next();
           };
         }
@@ -247,6 +258,21 @@
     };
 
     sizeCanvas();
+
+    // Paint the poster frame into the canvas RIGHT AWAY so users
+    // never see a black canvas before frames have loaded — especially
+    // important on mobile where the first scroll can fire before any
+    // frame finishes downloading.
+    const paintPoster = () => {
+      if (fallbackImg && fallbackImg.complete && fallbackImg.naturalWidth) {
+        drawImageCover(fallbackImg);
+      }
+    };
+    if (fallbackImg) {
+      if (fallbackImg.complete) paintPoster();
+      else fallbackImg.addEventListener('load', paintPoster, { once: true });
+    }
+
     preload();
     window.addEventListener('scroll', onScroll, { passive: true });
     // Use orientationchange + a debounced resize so iOS Safari's address-bar
