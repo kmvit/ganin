@@ -193,16 +193,12 @@
       ctx2d.drawImage(img, dx, dy, dw, dh);
     };
 
-    // Preload frames in priority chunks
+    // Preload frames sequentially so the early portion of scroll
+    // always has the matching frame ready (the visible part of the
+    // animation appears first, just like the user sees it).
     const preload = () => {
       const queue = [];
-      const stride = 4;
-      // First pass: every 4th frame for quick rough preview
-      for (let i = 0; i < FRAME_COUNT; i += stride) queue.push(i);
-      // Then fill in the gaps
-      for (let i = 1; i < FRAME_COUNT; i++) {
-        if (i % stride !== 0) queue.push(i);
-      }
+      for (let i = 0; i < FRAME_COUNT; i++) queue.push(i);
 
       let inflight = 0;
       const MAX_PARALLEL = 6;
