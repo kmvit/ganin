@@ -41,10 +41,7 @@
 
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;       /* belt-and-braces against rogue overflow */
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -56,8 +53,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-  min-width: 0;
+  /* clip (not hidden) — prevents stray horizontal overflow
+     without breaking position:sticky on the hero */
+  overflow-x: clip;
 }
 
 img, svg, video, canvas, iframe { display: block; max-width: 100%; }
@@ -1418,7 +1416,7 @@ a.ccard__big:hover { color: var(--accent); }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .phone-link { display: none; }
-  .hero { height: 140vh; }   /* shorter scroll range on mobile — snappier scrub */
+  .hero { height: 180vh; }   /* shorter scroll range on mobile */
   .hero__title { font-size: clamp(1.9rem, 8.6vw, 2.8rem); letter-spacing: -0.02em; max-width: none; hyphens: auto; }
   .hero__lede  { font-size: 15px; }
   .hero__content { padding-bottom: 56px; }
