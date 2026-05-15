@@ -138,14 +138,22 @@
     let lastDrawnIdx = -1;
     let videoAspect = 1280 / 720;
 
+    // Use the canvas's own CSS-rendered size for the internal pixel
+    // buffer. Earlier we used window.innerHeight, but on some browsers
+    // (and in DevTools device emulation) innerHeight can desync from
+    // the actual layout viewport — making the canvas grossly oversized
+    // and breaking the scroll-progress math too.
+    const visibleVh = () =>
+      document.documentElement.clientHeight || window.innerHeight;
+
     const sizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = hero.clientWidth;
-      const h = window.innerHeight;
+      const w = canvas.clientWidth  || hero.clientWidth;
+      const h = canvas.clientHeight || visibleVh();
       canvas.width  = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
-      canvas.style.width  = w + 'px';
-      canvas.style.height = h + 'px';
+      // Let CSS (inset: 0 inside .hero__sticky) drive the on-page size;
+      // we only set the internal pixel buffer here.
       ctx2d.setTransform(dpr, 0, 0, dpr, 0, 0);
       // Force redraw on resize
       if (lastDrawnIdx >= 0) drawFrame(lastDrawnIdx, true);
@@ -243,20 +251,50 @@
       next();
     };
 
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const rect = hero.getBoundingClientRect();
-        const scrolled = -rect.top;
-        const total = rect.height - window.innerHeight;
-        const progress = total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0;
-        const idx = Math.round(progress * (FRAME_COUNT - 1));
-        drawFrame(idx);
-        ticking = false;
-      });
+    // Compute current frame index from scroll position
+    const computeIdx = () => {
+      const rect = hero.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const total = rect.height - visibleVh();
+      const progress = total > 0 ? Math.max(0, Math.min(1, scrolled / total)) : 0;
+      return Math.round(progress * (FRAME_COUNT - 1));
     };
+    const onScroll = () => drawFrame(computeIdx());
+
+    // Continuous rAF loop while the hero is on-screen. We can't rely on
+    // scroll events alone — some Android browsers (Samsung Internet,
+    // Chrome) throttle them during sticky-pinning + URL-bar collapse,
+    // so the canvas stops updating until well into the unstick phase.
+    // A self-perpetuating rAF reads the latest scroll every frame.
+    let rafId = null;
+    let heroInView = true;
+    const tick = () => {
+      drawFrame(computeIdx());
+      rafId = heroInView ? requestAnimationFrame(tick) : null;
+    };
+    const startTick = () => {
+      if (rafId == null) {
+        heroInView = true;
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+    const stopTick = () => {
+      heroInView = false;
+      if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; }
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.target === hero) {
+            if (e.isIntersecting) startTick();
+            else stopTick();
+          }
+        }
+      }, { threshold: 0 });
+      io.observe(hero);
+    } else {
+      startTick();
+    }
 
     sizeCanvas();
 
